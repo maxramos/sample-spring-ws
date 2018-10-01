@@ -6,14 +6,14 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.maxaramos.springwstest.model.User;
+import com.maxaramos.springwstest.swst.UserType;
 
 @Service
 public class UserService {
 
-	private Map<Long, User> map = new HashMap<>();
+	private Map<Long, UserType> map = new HashMap<>();
 
-	public User addUser(User user) {
+	public UserType addUser(UserType user) {
 		Long key = Instant.now().toEpochMilli();
 		user.setId(key);
 		map.put(key, user);

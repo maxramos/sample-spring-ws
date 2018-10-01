@@ -6,8 +6,10 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.maxaramos.springwstest.model.User;
 import com.maxaramos.springwstest.service.UserService;
+import com.maxaramos.springwstest.swst.AddUserRequest;
+import com.maxaramos.springwstest.swst.AddUserResponse;
+import com.maxaramos.springwstest.swst.UserType;
 
 @Endpoint
 public class UserEndpoint {
@@ -19,8 +21,11 @@ public class UserEndpoint {
 
 	@PayloadRoot(localPart = "addUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
-	public User addUser(@RequestPayload User user) {
-		return userService.addUser(user);
+	public AddUserResponse addUser(@RequestPayload AddUserRequest request) {
+		 UserType user = userService.addUser(request.getUser());
+		 AddUserResponse response = new AddUserResponse();
+		 response.setUser(user);
+		 return response;
 	}
 
 }
