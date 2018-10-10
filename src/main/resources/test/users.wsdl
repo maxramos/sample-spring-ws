@@ -6,10 +6,11 @@
 	xmlns:tns="http://springwstest.maxaramos.com/swst"
 	targetNamespace="http://springwstest.maxaramos.com/swst">
 	<wsdl:types>
-		<schema xmlns="http://www.w3.org/2001/XMLSchema">
-			<import namespace="http://springwstest.maxaramos.com/swst"
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import
+				namespace="http://springwstest.maxaramos.com/swst"
 				schemaLocation="user.xsd" />
-		</schema>
+		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="AddUserResponse">
 		<wsdl:part element="tns:AddUserResponse"
