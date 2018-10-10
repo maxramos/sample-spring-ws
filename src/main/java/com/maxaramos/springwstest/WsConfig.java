@@ -29,7 +29,7 @@ public class WsConfig {
 
 //	@Bean
 	public SimpleXsdSchema userSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("/schema/user.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("/wsdl/user.xsd"));
 	}
 
 }
