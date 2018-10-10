@@ -12,19 +12,20 @@ import org.springframework.xml.xsd.SimpleXsdSchema;
 @Configuration
 public class WsConfig {
 
-//	@Bean
+	@Bean
 	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context) {
-		MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
-		messageDispatcherServlet.setApplicationContext(context);
-		messageDispatcherServlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean<>(messageDispatcherServlet, "/services/*");
+		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+		servlet.setApplicationContext(context);
+		servlet.setTransformWsdlLocations(true);
+		return new ServletRegistrationBean<>(servlet, "/user/*");
 	}
 
 	@Bean(name = "users")
 	public DefaultWsdl11Definition usersWsdl() {
 		DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
 		wsdl.setPortTypeName("UserService");
-//		wsdl.setLocationUri("/services/");
+		wsdl.setTargetNamespace("http://springwstest.maxaramos.com/user/definition");
+		wsdl.setLocationUri("/user");
 		wsdl.setSchema(userXsd());
 		return wsdl;
 	}

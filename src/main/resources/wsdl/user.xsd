@@ -1,27 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified"
-	targetNamespace="http://springwstest.maxaramos.com/swst"
-	xmlns:swst="http://springwstest.maxaramos.com/swst">
+	targetNamespace="http://springwstest.maxaramos.com/user/schema"
+	xmlns:swst="http://springwstest.maxaramos.com/user/schema">
 	<complexType name="UserType">
-		<all>
-			<element name="id" type="long" minOccurs="0" />
+		<sequence>
+			<element name="id" type="long" />
 			<element name="username" type="string" />
 			<element name="password" type="string" />
-		</all>
+		</sequence>
 	</complexType>
 	<element name="AddUserRequest">
 		<complexType>
-			<all>
-				<element name="user" type="swst:UserType" />
-			</all>
+			<sequence>
+				<element name="username" type="string" />
+				<element name="password" type="string" />
+			</sequence>
 		</complexType>
 	</element>
 	<element name="AddUserResponse">
 		<complexType>
-			<all>
+			<sequence>
 				<element name="user" type="swst:UserType" />
-			</all>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetUserRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="long" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetUserResponse">
+		<complexType>
+			<sequence>
+				<element name="user" type="swst:UserType" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateUserRequest">
+		<complexType>
+			<sequence>
+				<element name="user" type="swst:UserType" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateUserResponse">
+		<complexType>
+			<sequence>
+				<element name="user" type="swst:UserType" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteUserRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="long" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteUserResponse">
+		<complexType>
+			<sequence>
+				<element name="result" type="boolean" />
+			</sequence>
 		</complexType>
 	</element>
 </schema>
