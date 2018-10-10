@@ -19,7 +19,7 @@ public class UserEndpoint {
 	@Autowired
 	private UserService userService;
 
-	@PayloadRoot(localPart = "addUserRequest", namespace = NAMESPACE_URI)
+	@PayloadRoot(localPart = "AddUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public AddUserResponse addUser(@RequestPayload AddUserRequest request) {
 		 UserType user = userService.addUser(request.getUser());

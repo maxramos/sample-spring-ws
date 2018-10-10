@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-	elementFormDefault="qualified" 
+	elementFormDefault="qualified"
 	targetNamespace="http://springwstest.maxaramos.com/swst"
 	xmlns:swst="http://springwstest.maxaramos.com/swst">
-	<element name="addUserRequest">
-		<complexType>
-			<all>
-				<element name="user" type="swst:UserType" />
-			</all>
-		</complexType>
-	</element>
-	<element name="addUserResponse">
-		<complexType>
-			<all>
-				<element name="user" type="swst:UserType" />
-			</all>
-		</complexType>
-	</element>
 	<complexType name="UserType">
 		<all>
 			<element name="id" type="long" minOccurs="0" />
@@ -24,4 +10,18 @@
 			<element name="password" type="string" />
 		</all>
 	</complexType>
+	<element name="AddUserRequest">
+		<complexType>
+			<all>
+				<element name="user" type="swst:UserType" />
+			</all>
+		</complexType>
+	</element>
+	<element name="AddUserResponse">
+		<complexType>
+			<all>
+				<element name="user" type="swst:UserType" />
+			</all>
+		</complexType>
+	</element>
 </schema>
