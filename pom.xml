@@ -74,7 +74,7 @@
 				</executions>
 				<configuration>
 					<sources>
-						<source>${project.basedir}/src/main/resources/wsdl</source>
+						<source>${project.basedir}/src/main/resources/xsd</source>
 					</sources>
 				</configuration>
 			</plugin>

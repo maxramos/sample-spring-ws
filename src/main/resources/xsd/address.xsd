@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://springwstest.maxaramos.com/address/schema"
+	xmlns:swst="http://springwstest.maxaramos.com/address/schema">
+	<complexType name="AddressType">
+		<sequence>
+			<element name="id" type="long" />
+			<element name="address1" type="string" />
+			<element name="address2" type="string" />
+			<element name="city" type="string" />
+			<element name="state" type="string" />
+			<element name="country" type="string" />
+			<element name="zipCode" type="string" />
+		</sequence>
+	</complexType>
+	<element name="AddAddressRequest">
+		<complexType>
+			<sequence>
+				<element name="address1" type="string" />
+				<element name="address2" type="string" />
+				<element name="city" type="string" />
+				<element name="state" type="string" />
+				<element name="country" type="string" />
+				<element name="zipCode" type="string" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddAddressResponse">
+		<complexType>
+			<sequence>
+				<element name="address" type="swst:AddressType" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetAddressRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="long" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetAddressResponse">
+		<complexType>
+			<sequence>
+				<element name="address" type="swst:AddressType" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateAddressRequest">
+		<complexType>
+			<sequence>
+				<element name="address" type="swst:AddressType" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateAddressResponse">
+		<complexType>
+			<sequence>
+				<element name="address" type="swst:AddressType" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteAddressRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="long" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteAddressResponse">
+		<complexType>
+			<sequence>
+				<element name="result" type="boolean" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>

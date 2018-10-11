@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://springwstest.maxaramos.com/address/schema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://springwstest.maxaramos.com/address/definition"
+	targetNamespace="http://springwstest.maxaramos.com/address/definition">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema"
+			xmlns:swst="http://springwstest.maxaramos.com/address/schema"
+			elementFormDefault="qualified"
+			targetNamespace="http://springwstest.maxaramos.com/address/schema">
+			<complexType name="AddressType">
+				<sequence>
+					<element name="id" type="long" />
+					<element name="address1" type="string" />
+					<element name="address2" type="string" />
+					<element name="city" type="string" />
+					<element name="state" type="string" />
+					<element name="country" type="string" />
+					<element name="zipCode" type="string" />
+				</sequence>
+			</complexType>
+			<element name="AddAddressRequest">
+				<complexType>
+					<sequence>
+						<element name="address1" type="string" />
+						<element name="address2" type="string" />
+						<element name="city" type="string" />
+						<element name="state" type="string" />
+						<element name="country" type="string" />
+						<element name="zipCode" type="string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="AddAddressResponse">
+				<complexType>
+					<sequence>
+						<element name="address" type="swst:AddressType" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="GetAddressRequest">
+				<complexType>
+					<sequence>
+						<element name="id" type="long" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="GetAddressResponse">
+				<complexType>
+					<sequence>
+						<element name="address" type="swst:AddressType" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="UpdateAddressRequest">
+				<complexType>
+					<sequence>
+						<element name="address" type="swst:AddressType" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="UpdateAddressResponse">
+				<complexType>
+					<sequence>
+						<element name="address" type="swst:AddressType" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="DeleteAddressRequest">
+				<complexType>
+					<sequence>
+						<element name="id" type="long" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="DeleteAddressResponse">
+				<complexType>
+					<sequence>
+						<element name="result" type="boolean" />
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="GetAddressRequest">
+		<wsdl:part element="sch:GetAddressRequest"
+			name="GetAddressRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="UpdateAddressResponse">
+		<wsdl:part element="sch:UpdateAddressResponse"
+			name="UpdateAddressResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DeleteAddressRequest">
+		<wsdl:part element="sch:DeleteAddressRequest"
+			name="DeleteAddressRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DeleteAddressResponse">
+		<wsdl:part element="sch:DeleteAddressResponse"
+			name="DeleteAddressResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetAddressResponse">
+		<wsdl:part element="sch:GetAddressResponse"
+			name="GetAddressResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AddAddressRequest">
+		<wsdl:part element="sch:AddAddressRequest"
+			name="AddAddressRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="AddAddressResponse">
+		<wsdl:part element="sch:AddAddressResponse"
+			name="AddAddressResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="UpdateAddressRequest">
+		<wsdl:part element="sch:UpdateAddressRequest"
+			name="UpdateAddressRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="AddressService">
+		<wsdl:operation name="GetAddress">
+			<wsdl:input message="tns:GetAddressRequest"
+				name="GetAddressRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:GetAddressResponse"
+				name="GetAddressResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAddress">
+			<wsdl:input message="tns:UpdateAddressRequest"
+				name="UpdateAddressRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:UpdateAddressResponse"
+				name="UpdateAddressResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteAddress">
+			<wsdl:input message="tns:DeleteAddressRequest"
+				name="DeleteAddressRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:DeleteAddressResponse"
+				name="DeleteAddressResponse">
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AddAddress">
+			<wsdl:input message="tns:AddAddressRequest"
+				name="AddAddressRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:AddAddressResponse"
+				name="AddAddressResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="AddressServiceSoap11"
+		type="tns:AddressService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="GetAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="GetAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="UpdateAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="UpdateAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DeleteAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="DeleteAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="DeleteAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AddAddress">
+			<soap:operation soapAction="" />
+			<wsdl:input name="AddAddressRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="AddAddressResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="AddressServiceService">
+		<wsdl:port binding="tns:AddressServiceSoap11"
+			name="AddressServiceSoap11">
+			<soap:address location="http://localhost:8080/address" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
