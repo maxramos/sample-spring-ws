@@ -74,14 +74,15 @@ public class AddressEndpoint {
 	}
 
 	public static Address fromRequest(UpdateAddressRequest request) {
+		AddressType addressType = request.getAddress();
 		Address address = new Address();
-		address.setId(request.getAddress().getId());
-		address.setAddress1(request.getAddress().getAddress1());
-		address.setAddress2(request.getAddress().getAddress2());
-		address.setCity(request.getAddress().getCity());
-		address.setState(request.getAddress().getState());
-		address.setCountry(request.getAddress().getCountry());
-		address.setZipCode(request.getAddress().getZipCode());
+		address.setId(addressType.getId());
+		address.setAddress1(addressType.getAddress1());
+		address.setAddress2(addressType.getAddress2());
+		address.setCity(addressType.getCity());
+		address.setState(addressType.getState());
+		address.setCountry(addressType.getCountry());
+		address.setZipCode(addressType.getZipCode());
 		return address;
 	}
 

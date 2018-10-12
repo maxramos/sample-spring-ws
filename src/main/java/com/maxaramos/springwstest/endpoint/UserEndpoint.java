@@ -71,10 +71,11 @@ public class UserEndpoint {
 	}
 
 	public static User fromRequest(UpdateUserRequest request) {
+		UserType userType = request.getUser();
 		User user = new User();
-		user.setId(request.getUser().getId());
-		user.setUsername(request.getUser().getUsername());
-		user.setPassword(request.getUser().getPassword());
+		user.setId(userType.getId());
+		user.setUsername(userType.getUsername());
+		user.setPassword(userType.getPassword());
 		return user;
 	}
 
