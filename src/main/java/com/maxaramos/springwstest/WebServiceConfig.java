@@ -14,40 +14,40 @@ import org.springframework.xml.xsd.XsdSchema;
 public class WebServiceConfig {
 
 //	@Bean
-	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context) {
-		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-		servlet.setApplicationContext(context);
-		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean<>(servlet, "/services/*");
+	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
+		MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
+		messageDispatcherServlet.setApplicationContext(applicationContext);
+		messageDispatcherServlet.setTransformWsdlLocations(true);
+		return new ServletRegistrationBean<>(messageDispatcherServlet, "/services/*");
 	}
 
 //	@Bean(name = "UserService")
-	public DefaultWsdl11Definition usersWsdl(@Qualifier("user") XsdSchema userXsd) {
-		DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
-		wsdl.setPortTypeName("UserService");
-		wsdl.setTargetNamespace("http://springwstest.maxaramos.com/user");
-		wsdl.setLocationUri("/services");
-		wsdl.setSchema(userXsd);
-		return wsdl;
+	public DefaultWsdl11Definition userWsdlDefinition(@Qualifier("user") XsdSchema userXsdSchema) {
+		DefaultWsdl11Definition wsdlDefinition = new DefaultWsdl11Definition();
+		wsdlDefinition.setPortTypeName("UserService");
+		wsdlDefinition.setTargetNamespace("http://springwstest.maxaramos.com/user");
+		wsdlDefinition.setLocationUri("/services");
+		wsdlDefinition.setSchema(userXsdSchema);
+		return wsdlDefinition;
 	}
 
 //	@Bean(name = "AddressService")
-	public DefaultWsdl11Definition addressesWsdl(@Qualifier("address") XsdSchema addressXsd) {
-		DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
-		wsdl.setPortTypeName("AddressService");
-		wsdl.setTargetNamespace("http://springwstest.maxaramos.com/address");
-		wsdl.setLocationUri("/services");
-		wsdl.setSchema(addressXsd);
-		return wsdl;
+	public DefaultWsdl11Definition addressWsdlDefinition(@Qualifier("address") XsdSchema addressXsdSchema) {
+		DefaultWsdl11Definition wsdlDefinition = new DefaultWsdl11Definition();
+		wsdlDefinition.setPortTypeName("AddressService");
+		wsdlDefinition.setTargetNamespace("http://springwstest.maxaramos.com/address");
+		wsdlDefinition.setLocationUri("/services");
+		wsdlDefinition.setSchema(addressXsdSchema);
+		return wsdlDefinition;
 	}
 
 //	@Bean(name = "user")
-	public SimpleXsdSchema userXsd() {
+	public XsdSchema userXsdSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("/xsd/user.xsd"));
 	}
 
 //	@Bean(name = "address")
-	public SimpleXsdSchema addressXsd() {
+	public XsdSchema addressXsdSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("/xsd/address.xsd"));
 	}
 
