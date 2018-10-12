@@ -8,6 +8,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.maxaramos.springwstest.address.AddAddressRequest;
 import com.maxaramos.springwstest.address.AddAddressResponse;
+import com.maxaramos.springwstest.address.AddressType;
 import com.maxaramos.springwstest.address.DeleteAddressRequest;
 import com.maxaramos.springwstest.address.DeleteAddressResponse;
 import com.maxaramos.springwstest.address.GetAddressRequest;
@@ -28,9 +29,9 @@ public class AddressEndpoint {
 	@PayloadRoot(localPart = "AddAddressRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public AddAddressResponse addUser(@RequestPayload AddAddressRequest request) {
-		Address address = addressService.addAddress(Address.fromRequest(request));
+		Address address = addressService.addAddress(fromRequest(request));
 		AddAddressResponse response = new AddAddressResponse();
-		response.setAddress(address.toAddressType());
+		response.setAddress(fromAddress(address));
 		return response;
 	}
 
@@ -39,16 +40,16 @@ public class AddressEndpoint {
 	public GetAddressResponse getAddress(@RequestPayload GetAddressRequest request) {
 		Address address = addressService.getAddress(request.getId());
 		GetAddressResponse response = new GetAddressResponse();
-		response.setAddress(address.toAddressType());
+		response.setAddress(fromAddress(address));
 		return response;
 	}
 
 	@PayloadRoot(localPart = "UpdateAddressRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public UpdateAddressResponse updateAddress(@RequestPayload UpdateAddressRequest request) {
-		Address address = addressService.updateAddress(Address.fromRequest(request));
+		Address address = addressService.updateAddress(fromRequest(request));
 		UpdateAddressResponse response = new UpdateAddressResponse();
-		response.setAddress(address.toAddressType());
+		response.setAddress(fromAddress(address));
 		return response;
 	}
 
@@ -59,6 +60,41 @@ public class AddressEndpoint {
 		DeleteAddressResponse response = new DeleteAddressResponse();
 		response.setResult(result);
 		return response;
+	}
+
+	public static Address fromRequest(AddAddressRequest request) {
+		Address address = new Address();
+		address.setAddress1(request.getAddress1());
+		address.setAddress2(request.getAddress2());
+		address.setCity(request.getCity());
+		address.setState(request.getState());
+		address.setCountry(request.getCountry());
+		address.setZipCode(request.getZipCode());
+		return address;
+	}
+
+	public static Address fromRequest(UpdateAddressRequest request) {
+		Address address = new Address();
+		address.setId(request.getAddress().getId());
+		address.setAddress1(request.getAddress().getAddress1());
+		address.setAddress2(request.getAddress().getAddress2());
+		address.setCity(request.getAddress().getCity());
+		address.setState(request.getAddress().getState());
+		address.setCountry(request.getAddress().getCountry());
+		address.setZipCode(request.getAddress().getZipCode());
+		return address;
+	}
+
+	public AddressType fromAddress(Address address) {
+		AddressType addressType = new AddressType();
+		addressType.setId(address.getId());
+		addressType.setAddress1(address.getAddress1());
+		addressType.setAddress2(address.getAddress2());
+		addressType.setCity(address.getCity());
+		addressType.setState(address.getState());
+		addressType.setCountry(address.getCountry());
+		addressType.setZipCode(address.getZipCode());
+		return addressType;
 	}
 
 }

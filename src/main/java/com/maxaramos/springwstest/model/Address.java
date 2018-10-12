@@ -2,10 +2,6 @@ package com.maxaramos.springwstest.model;
 
 import java.io.Serializable;
 
-import com.maxaramos.springwstest.address.AddAddressRequest;
-import com.maxaramos.springwstest.address.AddressType;
-import com.maxaramos.springwstest.address.UpdateAddressRequest;
-
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = -3927773470528750517L;
@@ -17,41 +13,6 @@ public class Address implements Serializable {
 	private String state;
 	private String country;
 	private String zipCode;
-
-	public static Address fromRequest(AddAddressRequest request) {
-		Address address = new Address();
-		address.address1 = request.getAddress1();
-		address.address2 = request.getAddress2();
-		address.city = request.getCity();
-		address.state = request.getState();
-		address.country = request.getCountry();
-		address.zipCode = request.getZipCode();
-		return address;
-	}
-
-	public static Address fromRequest(UpdateAddressRequest request) {
-		Address address = new Address();
-		address.id = request.getAddress().getId();
-		address.address1 = request.getAddress().getAddress1();
-		address.address2 = request.getAddress().getAddress2();
-		address.city = request.getAddress().getCity();
-		address.state = request.getAddress().getState();
-		address.country = request.getAddress().getCountry();
-		address.zipCode = request.getAddress().getZipCode();
-		return address;
-	}
-
-	public AddressType toAddressType() {
-		AddressType addressType = new AddressType();
-		addressType.setId(id);
-		addressType.setAddress1(address1);
-		addressType.setAddress2(address2);
-		addressType.setCity(city);
-		addressType.setState(state);
-		addressType.setCountry(country);
-		addressType.setZipCode(zipCode);
-		return addressType;
-	}
 
 	public Long getId() {
 		return id;

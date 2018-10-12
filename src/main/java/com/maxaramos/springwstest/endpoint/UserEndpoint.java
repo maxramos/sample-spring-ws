@@ -16,6 +16,7 @@ import com.maxaramos.springwstest.user.GetUserRequest;
 import com.maxaramos.springwstest.user.GetUserResponse;
 import com.maxaramos.springwstest.user.UpdateUserRequest;
 import com.maxaramos.springwstest.user.UpdateUserResponse;
+import com.maxaramos.springwstest.user.UserType;
 
 
 @Endpoint
@@ -29,9 +30,9 @@ public class UserEndpoint {
 	@PayloadRoot(localPart = "AddUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public AddUserResponse addUser(@RequestPayload AddUserRequest request) {
-		User user = userService.addUser(User.fromRequest(request));
+		User user = userService.addUser(fromRequest(request));
 		AddUserResponse response = new AddUserResponse();
-		response.setUser(user.toUserType());
+		response.setUser(fromUser(user));
 		return response;
 	}
 
@@ -40,16 +41,16 @@ public class UserEndpoint {
 	public GetUserResponse getUser(@RequestPayload GetUserRequest request) {
 		User user = userService.getUser(request.getId());
 		GetUserResponse response = new GetUserResponse();
-		response.setUser(user.toUserType());
+		response.setUser(fromUser(user));
 		return response;
 	}
 
 	@PayloadRoot(localPart = "UpdateUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public UpdateUserResponse updateUser(@RequestPayload UpdateUserRequest request) {
-		User user = userService.updateUser(User.fromRequest(request));
+		User user = userService.updateUser(fromRequest(request));
 		UpdateUserResponse response = new UpdateUserResponse();
-		response.setUser(user.toUserType());
+		response.setUser(fromUser(user));
 		return response;
 	}
 
@@ -60,6 +61,29 @@ public class UserEndpoint {
 		DeleteUserResponse response = new DeleteUserResponse();
 		response.setResult(result);
 		return response;
+	}
+
+	public static User fromRequest(AddUserRequest request) {
+		User user = new User();
+		user.setUsername(request.getUsername());
+		user.setPassword(request.getPassword());
+		return user;
+	}
+
+	public static User fromRequest(UpdateUserRequest request) {
+		User user = new User();
+		user.setId(request.getUser().getId());
+		user.setUsername(request.getUser().getUsername());
+		user.setPassword(request.getUser().getPassword());
+		return user;
+	}
+
+	public UserType fromUser(User user) {
+		UserType userType = new UserType();
+		userType.setId(user.getId());
+		userType.setUsername(user.getUsername());
+		userType.setPassword(user.getPassword());
+		return userType;
 	}
 
 }
