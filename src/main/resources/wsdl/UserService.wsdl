@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://springwstest.maxaramos.com/user" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://springwstest.maxaramos.com/user" targetNamespace="http://springwstest.maxaramos.com/user">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swst="http://springwstest.maxaramos.com/user" elementFormDefault="qualified" targetNamespace="http://springwstest.maxaramos.com/user">
+	<complexType name="UserType">
+		<sequence>
+			<element name="id" type="long"/>
+			<element name="username" type="string"/>
+			<element name="password" type="string"/>
+		</sequence>
+	</complexType>
+	<element name="AddUserRequest">
+		<complexType>
+			<sequence>
+				<element name="username" type="string"/>
+				<element name="password" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddUserResponse">
+		<complexType>
+			<sequence>
+				<element name="user" type="swst:UserType"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetUserRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="long"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetUserResponse">
+		<complexType>
+			<sequence>
+				<element name="user" type="swst:UserType"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateUserRequest">
+		<complexType>
+			<sequence>
+				<element name="user" type="swst:UserType"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateUserResponse">
+		<complexType>
+			<sequence>
+				<element name="user" type="swst:UserType"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteUserRequest">
+		<complexType>
+			<sequence>
+				<element name="id" type="long"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteUserResponse">
+		<complexType>
+			<sequence>
+				<element name="result" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserRequest">
+    <wsdl:part element="tns:GetUserRequest" name="GetUserRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteUserRequest">
+    <wsdl:part element="tns:DeleteUserRequest" name="DeleteUserRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetUserResponse">
+    <wsdl:part element="tns:GetUserResponse" name="GetUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteUserResponse">
+    <wsdl:part element="tns:DeleteUserResponse" name="DeleteUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddUserResponse">
+    <wsdl:part element="tns:AddUserResponse" name="AddUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateUserResponse">
+    <wsdl:part element="tns:UpdateUserResponse" name="UpdateUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddUserRequest">
+    <wsdl:part element="tns:AddUserRequest" name="AddUserRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateUserRequest">
+    <wsdl:part element="tns:UpdateUserRequest" name="UpdateUserRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UserService">
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserRequest" name="GetUserRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetUserResponse" name="GetUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserRequest" name="DeleteUserRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:DeleteUserResponse" name="DeleteUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input message="tns:AddUserRequest" name="AddUserRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:AddUserResponse" name="AddUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input message="tns:UpdateUserRequest" name="UpdateUserRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:UpdateUserResponse" name="UpdateUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServiceSoap11" type="tns:UserService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="AddUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserServiceService">
+    <wsdl:port binding="tns:UserServiceSoap11" name="UserServiceSoap11">
+      <soap:address location="http://localhost:8080/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

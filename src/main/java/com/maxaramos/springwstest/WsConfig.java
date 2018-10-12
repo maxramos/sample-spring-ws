@@ -3,20 +3,17 @@ package com.maxaramos.springwstest;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
-@EnableWs
-@Configuration
+//@EnableWs
+//@Configuration
 public class WsConfig {
 
-	@Bean
+//	@Bean
 	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(context);
@@ -24,7 +21,7 @@ public class WsConfig {
 		return new ServletRegistrationBean<>(servlet, "/services/*");
 	}
 
-	@Bean(name = "UserService")
+//	@Bean(name = "UserService")
 	public DefaultWsdl11Definition usersWsdl(@Qualifier("user") XsdSchema userXsd) {
 		DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
 		wsdl.setPortTypeName("UserService");
@@ -34,7 +31,7 @@ public class WsConfig {
 		return wsdl;
 	}
 
-	@Bean(name = "AddressService")
+//	@Bean(name = "AddressService")
 	public DefaultWsdl11Definition addressesWsdl(@Qualifier("address") XsdSchema addressXsd) {
 		DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
 		wsdl.setPortTypeName("AddressService");
@@ -44,12 +41,12 @@ public class WsConfig {
 		return wsdl;
 	}
 
-	@Bean(name = "user")
+//	@Bean(name = "user")
 	public SimpleXsdSchema userXsd() {
 		return new SimpleXsdSchema(new ClassPathResource("/xsd/user.xsd"));
 	}
 
-	@Bean(name = "address")
+//	@Bean(name = "address")
 	public SimpleXsdSchema addressXsd() {
 		return new SimpleXsdSchema(new ClassPathResource("/xsd/address.xsd"));
 	}
