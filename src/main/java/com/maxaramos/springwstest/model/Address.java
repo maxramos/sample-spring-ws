@@ -70,8 +70,4 @@ public class Address implements Serializable {
 		this.zipCode = zipCode;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 }
