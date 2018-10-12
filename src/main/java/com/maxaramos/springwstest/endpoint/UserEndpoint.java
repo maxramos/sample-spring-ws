@@ -8,19 +8,20 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.maxaramos.springwstest.model.User;
 import com.maxaramos.springwstest.service.UserService;
-import com.maxaramos.springwstest.user.schema.AddUserRequest;
-import com.maxaramos.springwstest.user.schema.AddUserResponse;
-import com.maxaramos.springwstest.user.schema.DeleteUserRequest;
-import com.maxaramos.springwstest.user.schema.DeleteUserResponse;
-import com.maxaramos.springwstest.user.schema.GetUserRequest;
-import com.maxaramos.springwstest.user.schema.GetUserResponse;
-import com.maxaramos.springwstest.user.schema.UpdateUserRequest;
-import com.maxaramos.springwstest.user.schema.UpdateUserResponse;
+import com.maxaramos.springwstest.user.AddUserRequest;
+import com.maxaramos.springwstest.user.AddUserResponse;
+import com.maxaramos.springwstest.user.DeleteUserRequest;
+import com.maxaramos.springwstest.user.DeleteUserResponse;
+import com.maxaramos.springwstest.user.GetUserRequest;
+import com.maxaramos.springwstest.user.GetUserResponse;
+import com.maxaramos.springwstest.user.UpdateUserRequest;
+import com.maxaramos.springwstest.user.UpdateUserResponse;
+
 
 @Endpoint
 public class UserEndpoint {
 
-	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/user/definition";
+	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/user";
 
 	@Autowired
 	private UserService userService;
@@ -46,7 +47,7 @@ public class UserEndpoint {
 	@PayloadRoot(localPart = "UpdateUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public UpdateUserResponse updateUser(@RequestPayload UpdateUserRequest request) {
-		User user = userService.addUser(User.fromRequest(request));
+		User user = userService.updateUser(User.fromRequest(request));
 		UpdateUserResponse response = new UpdateUserResponse();
 		response.setUser(user.toUserType());
 		return response;

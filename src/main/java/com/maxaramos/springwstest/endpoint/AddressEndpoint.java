@@ -6,21 +6,21 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.maxaramos.springwstest.address.schema.AddAddressRequest;
-import com.maxaramos.springwstest.address.schema.AddAddressResponse;
-import com.maxaramos.springwstest.address.schema.DeleteAddressRequest;
-import com.maxaramos.springwstest.address.schema.DeleteAddressResponse;
-import com.maxaramos.springwstest.address.schema.GetAddressRequest;
-import com.maxaramos.springwstest.address.schema.GetAddressResponse;
-import com.maxaramos.springwstest.address.schema.UpdateAddressRequest;
-import com.maxaramos.springwstest.address.schema.UpdateAddressResponse;
+import com.maxaramos.springwstest.address.AddAddressRequest;
+import com.maxaramos.springwstest.address.AddAddressResponse;
+import com.maxaramos.springwstest.address.DeleteAddressRequest;
+import com.maxaramos.springwstest.address.DeleteAddressResponse;
+import com.maxaramos.springwstest.address.GetAddressRequest;
+import com.maxaramos.springwstest.address.GetAddressResponse;
+import com.maxaramos.springwstest.address.UpdateAddressRequest;
+import com.maxaramos.springwstest.address.UpdateAddressResponse;
 import com.maxaramos.springwstest.model.Address;
 import com.maxaramos.springwstest.service.AddressService;
 
 @Endpoint
 public class AddressEndpoint {
 
-	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/address/definition";
+	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/address";
 
 	@Autowired
 	private AddressService addressService;
@@ -46,7 +46,7 @@ public class AddressEndpoint {
 	@PayloadRoot(localPart = "UpdateAddressRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public UpdateAddressResponse updateAddress(@RequestPayload UpdateAddressRequest request) {
-		Address address = addressService.addAddress(Address.fromRequest(request));
+		Address address = addressService.updateAddress(Address.fromRequest(request));
 		UpdateAddressResponse response = new UpdateAddressResponse();
 		response.setAddress(address.toAddressType());
 		return response;

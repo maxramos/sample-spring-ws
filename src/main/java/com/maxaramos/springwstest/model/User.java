@@ -2,9 +2,9 @@ package com.maxaramos.springwstest.model;
 
 import java.io.Serializable;
 
-import com.maxaramos.springwstest.user.schema.AddUserRequest;
-import com.maxaramos.springwstest.user.schema.UpdateUserRequest;
-import com.maxaramos.springwstest.user.schema.UserType;
+import com.maxaramos.springwstest.user.AddUserRequest;
+import com.maxaramos.springwstest.user.UpdateUserRequest;
+import com.maxaramos.springwstest.user.UserType;
 
 public class User implements Serializable {
 

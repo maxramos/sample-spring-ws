@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified"
-	targetNamespace="http://springwstest.maxaramos.com/address/schema"
-	xmlns:swst="http://springwstest.maxaramos.com/address/schema">
+	targetNamespace="http://springwstest.maxaramos.com/address"
+	xmlns:swst="http://springwstest.maxaramos.com/address">
 	<complexType name="AddressType">
 		<sequence>
 			<element name="id" type="long" />

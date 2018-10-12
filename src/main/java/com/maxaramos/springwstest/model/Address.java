@@ -2,9 +2,9 @@ package com.maxaramos.springwstest.model;
 
 import java.io.Serializable;
 
-import com.maxaramos.springwstest.address.schema.AddAddressRequest;
-import com.maxaramos.springwstest.address.schema.AddressType;
-import com.maxaramos.springwstest.address.schema.UpdateAddressRequest;
+import com.maxaramos.springwstest.address.AddAddressRequest;
+import com.maxaramos.springwstest.address.AddressType;
+import com.maxaramos.springwstest.address.UpdateAddressRequest;
 
 public class Address implements Serializable {
 

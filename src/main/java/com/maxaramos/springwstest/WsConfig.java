@@ -17,27 +17,19 @@ import org.springframework.xml.xsd.XsdSchema;
 public class WsConfig {
 
 	@Bean
-	public ServletRegistrationBean<MessageDispatcherServlet> userMessageDispatcherServlet(ApplicationContext context) {
+	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
 		servlet.setApplicationContext(context);
 		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean<>(servlet, "/user/*");
-	}
-
-	@Bean
-	public ServletRegistrationBean<MessageDispatcherServlet> addressMessageDispatcherServlet(ApplicationContext context) {
-		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-		servlet.setApplicationContext(context);
-		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean<>(servlet, "/address/*");
+		return new ServletRegistrationBean<>(servlet, "/services/*");
 	}
 
 	@Bean(name = "UserService")
 	public DefaultWsdl11Definition usersWsdl(@Qualifier("user") XsdSchema userXsd) {
 		DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
 		wsdl.setPortTypeName("UserService");
-		wsdl.setTargetNamespace("http://springwstest.maxaramos.com/user/definition");
-		wsdl.setLocationUri("/user");
+		wsdl.setTargetNamespace("http://springwstest.maxaramos.com/user");
+		wsdl.setLocationUri("/services");
 		wsdl.setSchema(userXsd);
 		return wsdl;
 	}
@@ -46,8 +38,8 @@ public class WsConfig {
 	public DefaultWsdl11Definition addressesWsdl(@Qualifier("address") XsdSchema addressXsd) {
 		DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
 		wsdl.setPortTypeName("AddressService");
-		wsdl.setTargetNamespace("http://springwstest.maxaramos.com/address/definition");
-		wsdl.setLocationUri("/address");
+		wsdl.setTargetNamespace("http://springwstest.maxaramos.com/address");
+		wsdl.setLocationUri("/services");
 		wsdl.setSchema(addressXsd);
 		return wsdl;
 	}
