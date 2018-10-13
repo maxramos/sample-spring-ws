@@ -71,7 +71,7 @@
 	<element name="DeleteAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="result" type="boolean" />
+				<element name="deleted" type="boolean" />
 			</sequence>
 		</complexType>
 	</element>

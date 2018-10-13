@@ -70,4 +70,9 @@ public class Address implements Serializable {
 		this.zipCode = zipCode;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Address [id=%s, address1=%s, address2=%s, city=%s, state=%s, country=%s, zipCode=%s]", id, address1, address2, city, state, country, zipCode);
+	}
+
 }

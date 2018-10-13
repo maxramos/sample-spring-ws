@@ -1,5 +1,6 @@
 package com.maxaramos.springwstest.endpoint;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -24,12 +25,16 @@ public class AddressEndpoint {
 	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/address";
 
 	@Autowired
+	private Logger log;
+
+	@Autowired
 	private AddressService addressService;
 
 	@PayloadRoot(localPart = "AddAddressRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
-	public AddAddressResponse addUser(@RequestPayload AddAddressRequest request) {
+	public AddAddressResponse addAddress(@RequestPayload AddAddressRequest request) {
 		Address address = addressService.addAddress(fromRequest(request));
+		log.info("addAddress: " + address);
 		AddAddressResponse response = new AddAddressResponse();
 		response.setAddress(fromAddress(address));
 		return response;
@@ -39,6 +44,7 @@ public class AddressEndpoint {
 	@ResponsePayload
 	public GetAddressResponse getAddress(@RequestPayload GetAddressRequest request) {
 		Address address = addressService.getAddress(request.getId());
+		log.info("getAddress: " + address);
 		GetAddressResponse response = new GetAddressResponse();
 		response.setAddress(fromAddress(address));
 		return response;
@@ -48,6 +54,7 @@ public class AddressEndpoint {
 	@ResponsePayload
 	public UpdateAddressResponse updateAddress(@RequestPayload UpdateAddressRequest request) {
 		Address address = addressService.updateAddress(fromRequest(request));
+		log.info("updateAddress: " + address);
 		UpdateAddressResponse response = new UpdateAddressResponse();
 		response.setAddress(fromAddress(address));
 		return response;
@@ -56,9 +63,10 @@ public class AddressEndpoint {
 	@PayloadRoot(localPart = "DeleteAddressRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public DeleteAddressResponse deleteAddress(@RequestPayload DeleteAddressRequest request) {
-		boolean result = addressService.deleteAddress(request.getId());
+		boolean deleted = addressService.deleteAddress(request.getId());
+		log.info("deleteAddress: " + deleted);
 		DeleteAddressResponse response = new DeleteAddressResponse();
-		response.setResult(result);
+		response.setDeleted(deleted);
 		return response;
 	}
 

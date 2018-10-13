@@ -1,5 +1,6 @@
 package com.maxaramos.springwstest.endpoint;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -25,12 +26,16 @@ public class UserEndpoint {
 	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/user";
 
 	@Autowired
+	private Logger log;
+
+	@Autowired
 	private UserService userService;
 
 	@PayloadRoot(localPart = "AddUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public AddUserResponse addUser(@RequestPayload AddUserRequest request) {
 		User user = userService.addUser(fromRequest(request));
+		log.info("addUser: " + user);
 		AddUserResponse response = new AddUserResponse();
 		response.setUser(fromUser(user));
 		return response;
@@ -40,6 +45,7 @@ public class UserEndpoint {
 	@ResponsePayload
 	public GetUserResponse getUser(@RequestPayload GetUserRequest request) {
 		User user = userService.getUser(request.getId());
+		log.info("getUser: " + user);
 		GetUserResponse response = new GetUserResponse();
 		response.setUser(fromUser(user));
 		return response;
@@ -49,6 +55,7 @@ public class UserEndpoint {
 	@ResponsePayload
 	public UpdateUserResponse updateUser(@RequestPayload UpdateUserRequest request) {
 		User user = userService.updateUser(fromRequest(request));
+		log.info("updateUser: " + user);
 		UpdateUserResponse response = new UpdateUserResponse();
 		response.setUser(fromUser(user));
 		return response;
@@ -57,9 +64,10 @@ public class UserEndpoint {
 	@PayloadRoot(localPart = "DeleteUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
 	public DeleteUserResponse deleteUser(@RequestPayload DeleteUserRequest request) {
-		boolean result = userService.deleteUser(request.getId());
+		boolean deleted = userService.deleteUser(request.getId());
+		log.info("deleteUser: " + deleted);
 		DeleteUserResponse response = new DeleteUserResponse();
-		response.setResult(result);
+		response.setDeleted(deleted);
 		return response;
 	}
 
