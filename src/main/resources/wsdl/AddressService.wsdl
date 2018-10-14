@@ -12,6 +12,17 @@
 			<element name="zipCode" type="string"/>
 		</sequence>
 	</complexType>
+	<element name="GetAllAddressRequest">
+		<complexType>
+		</complexType>
+	</element>
+	<element name="GetAllAddressResponse">
+		<complexType>
+			<sequence>
+				<element maxOccurs="unbounded" minOccurs="0" name="addresses" type="swst:AddressType"/>
+			</sequence>
+		</complexType>
+	</element>
 	<element name="AddAddressRequest">
 		<complexType>
 			<sequence>
@@ -75,6 +86,10 @@
 	</element>
 </schema>
   </wsdl:types>
+  <wsdl:message name="GetAllAddressResponse">
+    <wsdl:part element="tns:GetAllAddressResponse" name="GetAllAddressResponse">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="AddAddressRequest">
     <wsdl:part element="tns:AddAddressRequest" name="AddAddressRequest">
     </wsdl:part>
@@ -95,6 +110,10 @@
     <wsdl:part element="tns:DeleteAddressResponse" name="DeleteAddressResponse">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="GetAllAddressRequest">
+    <wsdl:part element="tns:GetAllAddressRequest" name="GetAllAddressRequest">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="DeleteAddressRequest">
     <wsdl:part element="tns:DeleteAddressRequest" name="DeleteAddressRequest">
     </wsdl:part>
@@ -108,6 +127,12 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="AddressService">
+    <wsdl:operation name="GetAllAddress">
+      <wsdl:input message="tns:GetAllAddressRequest" name="GetAllAddressRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAllAddressResponse" name="GetAllAddressResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddAddress">
       <wsdl:input message="tns:AddAddressRequest" name="AddAddressRequest">
     </wsdl:input>
@@ -135,6 +160,15 @@
   </wsdl:portType>
   <wsdl:binding name="AddressServiceSoap11" type="tns:AddressService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetAllAddress">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAllAddressRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAllAddressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddAddress">
       <soap:operation soapAction=""/>
       <wsdl:input name="AddAddressRequest">

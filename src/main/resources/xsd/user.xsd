@@ -10,6 +10,17 @@
 			<element name="password" type="string" />
 		</sequence>
 	</complexType>
+	<element name="GetAllUserRequest">
+		<complexType>
+		</complexType>
+	</element>
+	<element name="GetAllUserResponse">
+		<complexType>
+			<sequence>
+				<element name="users" type="swst:UserType" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
 	<element name="AddUserRequest">
 		<complexType>
 			<sequence>

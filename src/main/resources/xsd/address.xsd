@@ -14,6 +14,17 @@
 			<element name="zipCode" type="string" />
 		</sequence>
 	</complexType>
+	<element name="GetAllAddressRequest">
+		<complexType>
+		</complexType>
+	</element>
+	<element name="GetAllAddressResponse">
+		<complexType>
+			<sequence>
+				<element name="addresses" type="swst:AddressType" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
 	<element name="AddAddressRequest">
 		<complexType>
 			<sequence>

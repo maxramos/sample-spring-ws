@@ -1,5 +1,8 @@
 package com.maxaramos.springwstest.endpoint;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -14,6 +17,8 @@ import com.maxaramos.springwstest.address.DeleteAddressRequest;
 import com.maxaramos.springwstest.address.DeleteAddressResponse;
 import com.maxaramos.springwstest.address.GetAddressRequest;
 import com.maxaramos.springwstest.address.GetAddressResponse;
+import com.maxaramos.springwstest.address.GetAllAddressRequest;
+import com.maxaramos.springwstest.address.GetAllAddressResponse;
 import com.maxaramos.springwstest.address.UpdateAddressRequest;
 import com.maxaramos.springwstest.address.UpdateAddressResponse;
 import com.maxaramos.springwstest.model.Address;
@@ -29,6 +34,16 @@ public class AddressEndpoint {
 
 	@Autowired
 	private AddressService addressService;
+
+	@PayloadRoot(localPart = "GetAllAddressRequest", namespace = NAMESPACE_URI)
+	@ResponsePayload
+	public GetAllAddressResponse getAllAddress(@RequestPayload GetAllAddressRequest request) {
+		List<Address> addresses = addressService.getAllAddress();
+		log.info("getAllAddress: " + addresses);
+		GetAllAddressResponse response = new GetAllAddressResponse();
+		response.getAddresses().addAll(addresses.stream().map(address -> fromAddress(address)).collect(Collectors.toList()));
+		return response;
+	}
 
 	@PayloadRoot(localPart = "AddAddressRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload

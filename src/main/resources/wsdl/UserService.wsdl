@@ -8,6 +8,17 @@
 			<element name="password" type="string"/>
 		</sequence>
 	</complexType>
+	<element name="GetAllUserRequest">
+		<complexType>
+		</complexType>
+	</element>
+	<element name="GetAllUserResponse">
+		<complexType>
+			<sequence>
+				<element maxOccurs="unbounded" minOccurs="0" name="users" type="swst:UserType"/>
+			</sequence>
+		</complexType>
+	</element>
 	<element name="AddUserRequest">
 		<complexType>
 			<sequence>
@@ -71,6 +82,10 @@
     <wsdl:part element="tns:GetUserRequest" name="GetUserRequest">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="GetAllUserRequest">
+    <wsdl:part element="tns:GetAllUserRequest" name="GetAllUserRequest">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="DeleteUserRequest">
     <wsdl:part element="tns:DeleteUserRequest" name="DeleteUserRequest">
     </wsdl:part>
@@ -81,6 +96,10 @@
   </wsdl:message>
   <wsdl:message name="DeleteUserResponse">
     <wsdl:part element="tns:DeleteUserResponse" name="DeleteUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAllUserResponse">
+    <wsdl:part element="tns:GetAllUserResponse" name="GetAllUserResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="AddUserResponse">
@@ -104,6 +123,12 @@
       <wsdl:input message="tns:GetUserRequest" name="GetUserRequest">
     </wsdl:input>
       <wsdl:output message="tns:GetUserResponse" name="GetUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <wsdl:input message="tns:GetAllUserRequest" name="GetAllUserRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAllUserResponse" name="GetAllUserResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
@@ -133,6 +158,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="GetUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAllUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAllUserResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

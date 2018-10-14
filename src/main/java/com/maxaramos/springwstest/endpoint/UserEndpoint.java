@@ -1,5 +1,8 @@
 package com.maxaramos.springwstest.endpoint;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -13,6 +16,8 @@ import com.maxaramos.springwstest.user.AddUserRequest;
 import com.maxaramos.springwstest.user.AddUserResponse;
 import com.maxaramos.springwstest.user.DeleteUserRequest;
 import com.maxaramos.springwstest.user.DeleteUserResponse;
+import com.maxaramos.springwstest.user.GetAllUserRequest;
+import com.maxaramos.springwstest.user.GetAllUserResponse;
 import com.maxaramos.springwstest.user.GetUserRequest;
 import com.maxaramos.springwstest.user.GetUserResponse;
 import com.maxaramos.springwstest.user.UpdateUserRequest;
@@ -30,6 +35,16 @@ public class UserEndpoint {
 
 	@Autowired
 	private UserService userService;
+
+	@PayloadRoot(localPart = "GetAllUserRequest", namespace = NAMESPACE_URI)
+	@ResponsePayload
+	public GetAllUserResponse getAllUser(@RequestPayload GetAllUserRequest request) {
+		List<User> users = userService.getAllUser();
+		log.info("getAllUser: " + users);
+		GetAllUserResponse response = new GetAllUserResponse();
+		response.getUsers().addAll(users.stream().map(user -> fromUser(user)).collect(Collectors.toList()));
+		return response;
+	}
 
 	@PayloadRoot(localPart = "AddUserRequest", namespace = NAMESPACE_URI)
 	@ResponsePayload
