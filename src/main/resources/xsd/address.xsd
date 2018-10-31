@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified"
 	targetNamespace="http://samplespringws.maxaramos.com/address"
-	xmlns:swst="http://samplespringws.maxaramos.com/address">
+	xmlns:ssws="http://samplespringws.maxaramos.com/address">
 	<complexType name="AddressType">
 		<sequence>
 			<element name="id" type="long" />
@@ -21,7 +21,7 @@
 	<element name="GetAllAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="addresses" type="swst:AddressType" minOccurs="0" maxOccurs="unbounded" />
+				<element name="addresses" type="ssws:AddressType" minOccurs="0" maxOccurs="unbounded" />
 			</sequence>
 		</complexType>
 	</element>
@@ -40,7 +40,7 @@
 	<element name="AddAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType" />
+				<element name="address" type="ssws:AddressType" />
 			</sequence>
 		</complexType>
 	</element>
@@ -54,21 +54,21 @@
 	<element name="GetAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType" />
+				<element name="address" type="ssws:AddressType" />
 			</sequence>
 		</complexType>
 	</element>
 	<element name="UpdateAddressRequest">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType" />
+				<element name="address" type="ssws:AddressType" />
 			</sequence>
 		</complexType>
 	</element>
 	<element name="UpdateAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType" />
+				<element name="address" type="ssws:AddressType" />
 			</sequence>
 		</complexType>
 	</element>

@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified"
 	targetNamespace="http://samplespringws.maxaramos.com/user"
-	xmlns:swst="http://samplespringws.maxaramos.com/user">
+	xmlns:ssws="http://samplespringws.maxaramos.com/user">
 	<complexType name="UserType">
 		<sequence>
 			<element name="id" type="long" />
@@ -17,7 +17,7 @@
 	<element name="GetAllUserResponse">
 		<complexType>
 			<sequence>
-				<element name="users" type="swst:UserType" minOccurs="0" maxOccurs="unbounded" />
+				<element name="users" type="ssws:UserType" minOccurs="0" maxOccurs="unbounded" />
 			</sequence>
 		</complexType>
 	</element>
@@ -32,7 +32,7 @@
 	<element name="AddUserResponse">
 		<complexType>
 			<sequence>
-				<element name="user" type="swst:UserType" />
+				<element name="user" type="ssws:UserType" />
 			</sequence>
 		</complexType>
 	</element>
@@ -46,21 +46,21 @@
 	<element name="GetUserResponse">
 		<complexType>
 			<sequence>
-				<element name="user" type="swst:UserType" />
+				<element name="user" type="ssws:UserType" />
 			</sequence>
 		</complexType>
 	</element>
 	<element name="UpdateUserRequest">
 		<complexType>
 			<sequence>
-				<element name="user" type="swst:UserType" />
+				<element name="user" type="ssws:UserType" />
 			</sequence>
 		</complexType>
 	</element>
 	<element name="UpdateUserResponse">
 		<complexType>
 			<sequence>
-				<element name="user" type="swst:UserType" />
+				<element name="user" type="ssws:UserType" />
 			</sequence>
 		</complexType>
 	</element>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://samplespringws.maxaramos.com/address" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://samplespringws.maxaramos.com/address" targetNamespace="http://samplespringws.maxaramos.com/address">
   <wsdl:types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swst="http://samplespringws.maxaramos.com/address" elementFormDefault="qualified" targetNamespace="http://samplespringws.maxaramos.com/address">
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ssws="http://samplespringws.maxaramos.com/address" elementFormDefault="qualified" targetNamespace="http://samplespringws.maxaramos.com/address">
 	<complexType name="AddressType">
 		<sequence>
 			<element name="id" type="long"/>
@@ -19,7 +19,7 @@
 	<element name="GetAllAddressResponse">
 		<complexType>
 			<sequence>
-				<element maxOccurs="unbounded" minOccurs="0" name="addresses" type="swst:AddressType"/>
+				<element maxOccurs="unbounded" minOccurs="0" name="addresses" type="ssws:AddressType"/>
 			</sequence>
 		</complexType>
 	</element>
@@ -38,7 +38,7 @@
 	<element name="AddAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType"/>
+				<element name="address" type="ssws:AddressType"/>
 			</sequence>
 		</complexType>
 	</element>
@@ -52,21 +52,21 @@
 	<element name="GetAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType"/>
+				<element name="address" type="ssws:AddressType"/>
 			</sequence>
 		</complexType>
 	</element>
 	<element name="UpdateAddressRequest">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType"/>
+				<element name="address" type="ssws:AddressType"/>
 			</sequence>
 		</complexType>
 	</element>
 	<element name="UpdateAddressResponse">
 		<complexType>
 			<sequence>
-				<element name="address" type="swst:AddressType"/>
+				<element name="address" type="ssws:AddressType"/>
 			</sequence>
 		</complexType>
 	</element>
