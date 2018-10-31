@@ -1,4 +1,4 @@
-package com.maxaramos.springwstest.endpoint;
+package com.maxaramos.samplespringws.endpoint;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,25 +10,25 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.maxaramos.springwstest.model.User;
-import com.maxaramos.springwstest.service.UserService;
-import com.maxaramos.springwstest.user.AddUserRequest;
-import com.maxaramos.springwstest.user.AddUserResponse;
-import com.maxaramos.springwstest.user.DeleteUserRequest;
-import com.maxaramos.springwstest.user.DeleteUserResponse;
-import com.maxaramos.springwstest.user.GetAllUserRequest;
-import com.maxaramos.springwstest.user.GetAllUserResponse;
-import com.maxaramos.springwstest.user.GetUserRequest;
-import com.maxaramos.springwstest.user.GetUserResponse;
-import com.maxaramos.springwstest.user.UpdateUserRequest;
-import com.maxaramos.springwstest.user.UpdateUserResponse;
-import com.maxaramos.springwstest.user.UserType;
+import com.maxaramos.samplespringws.model.User;
+import com.maxaramos.samplespringws.service.UserService;
+import com.maxaramos.samplespringws.user.AddUserRequest;
+import com.maxaramos.samplespringws.user.AddUserResponse;
+import com.maxaramos.samplespringws.user.DeleteUserRequest;
+import com.maxaramos.samplespringws.user.DeleteUserResponse;
+import com.maxaramos.samplespringws.user.GetAllUserRequest;
+import com.maxaramos.samplespringws.user.GetAllUserResponse;
+import com.maxaramos.samplespringws.user.GetUserRequest;
+import com.maxaramos.samplespringws.user.GetUserResponse;
+import com.maxaramos.samplespringws.user.UpdateUserRequest;
+import com.maxaramos.samplespringws.user.UpdateUserResponse;
+import com.maxaramos.samplespringws.user.UserType;
 
 
 @Endpoint
 public class UserEndpoint {
 
-	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/user";
+	private static final String NAMESPACE_URI = "http://samplespringws.maxaramos.com/user";
 
 	@Autowired
 	private Logger log;

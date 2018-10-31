@@ -9,8 +9,8 @@
 		<version>2.1.0.RELEASE</version>
 	</parent>
 
-	<groupId>com.maxaramos.springwstest</groupId>
-	<artifactId>spring-ws-test</artifactId>
+	<groupId>com.maxaramos.samplespringws</groupId>
+	<artifactId>sample-spring-ws</artifactId>
 	<version>1.0.0</version>
 
 	<properties>
@@ -79,6 +79,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>spring-ws-test</finalName>
+		<finalName>sample-spring-ws</finalName>
 	</build>
 </project>

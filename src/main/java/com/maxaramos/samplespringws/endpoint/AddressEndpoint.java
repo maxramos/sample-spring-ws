@@ -1,4 +1,4 @@
-package com.maxaramos.springwstest.endpoint;
+package com.maxaramos.samplespringws.endpoint;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,24 +10,24 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.maxaramos.springwstest.address.AddAddressRequest;
-import com.maxaramos.springwstest.address.AddAddressResponse;
-import com.maxaramos.springwstest.address.AddressType;
-import com.maxaramos.springwstest.address.DeleteAddressRequest;
-import com.maxaramos.springwstest.address.DeleteAddressResponse;
-import com.maxaramos.springwstest.address.GetAddressRequest;
-import com.maxaramos.springwstest.address.GetAddressResponse;
-import com.maxaramos.springwstest.address.GetAllAddressRequest;
-import com.maxaramos.springwstest.address.GetAllAddressResponse;
-import com.maxaramos.springwstest.address.UpdateAddressRequest;
-import com.maxaramos.springwstest.address.UpdateAddressResponse;
-import com.maxaramos.springwstest.model.Address;
-import com.maxaramos.springwstest.service.AddressService;
+import com.maxaramos.samplespringws.address.AddAddressRequest;
+import com.maxaramos.samplespringws.address.AddAddressResponse;
+import com.maxaramos.samplespringws.address.AddressType;
+import com.maxaramos.samplespringws.address.DeleteAddressRequest;
+import com.maxaramos.samplespringws.address.DeleteAddressResponse;
+import com.maxaramos.samplespringws.address.GetAddressRequest;
+import com.maxaramos.samplespringws.address.GetAddressResponse;
+import com.maxaramos.samplespringws.address.GetAllAddressRequest;
+import com.maxaramos.samplespringws.address.GetAllAddressResponse;
+import com.maxaramos.samplespringws.address.UpdateAddressRequest;
+import com.maxaramos.samplespringws.address.UpdateAddressResponse;
+import com.maxaramos.samplespringws.model.Address;
+import com.maxaramos.samplespringws.service.AddressService;
 
 @Endpoint
 public class AddressEndpoint {
 
-	private static final String NAMESPACE_URI = "http://springwstest.maxaramos.com/address";
+	private static final String NAMESPACE_URI = "http://samplespringws.maxaramos.com/address";
 
 	@Autowired
 	private Logger log;

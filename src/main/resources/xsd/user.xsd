@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified"
-	targetNamespace="http://springwstest.maxaramos.com/user"
-	xmlns:swst="http://springwstest.maxaramos.com/user">
+	targetNamespace="http://samplespringws.maxaramos.com/user"
+	xmlns:swst="http://samplespringws.maxaramos.com/user">
 	<complexType name="UserType">
 		<sequence>
 			<element name="id" type="long" />

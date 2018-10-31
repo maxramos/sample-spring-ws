@@ -1,1 +1,1 @@
-# spring-ws-test
+# sample-spring-ws

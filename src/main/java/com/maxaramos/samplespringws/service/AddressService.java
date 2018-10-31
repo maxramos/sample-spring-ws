@@ -1,4 +1,4 @@
-package com.maxaramos.springwstest.service;
+package com.maxaramos.samplespringws.service;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.maxaramos.springwstest.model.Address;
+import com.maxaramos.samplespringws.model.Address;
 
 @Service
 public class AddressService {

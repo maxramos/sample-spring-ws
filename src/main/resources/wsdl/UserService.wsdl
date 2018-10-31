@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://springwstest.maxaramos.com/user" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://springwstest.maxaramos.com/user" targetNamespace="http://springwstest.maxaramos.com/user">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://samplespringws.maxaramos.com/user" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://samplespringws.maxaramos.com/user" targetNamespace="http://samplespringws.maxaramos.com/user">
   <wsdl:types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swst="http://springwstest.maxaramos.com/user" elementFormDefault="qualified" targetNamespace="http://springwstest.maxaramos.com/user">
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swst="http://samplespringws.maxaramos.com/user" elementFormDefault="qualified" targetNamespace="http://samplespringws.maxaramos.com/user">
 	<complexType name="UserType">
 		<sequence>
 			<element name="id" type="long"/>

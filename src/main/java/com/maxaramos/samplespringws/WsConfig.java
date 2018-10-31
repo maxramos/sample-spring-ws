@@ -1,4 +1,4 @@
-package com.maxaramos.springwstest;
+package com.maxaramos.samplespringws;
 
 import java.util.List;
 import java.util.Properties;
@@ -56,7 +56,7 @@ public class WsConfig extends WsConfigurerAdapter {
 	public DefaultWsdl11Definition userWsdlDefinition(@Qualifier("user") XsdSchema userXsdSchema) {
 		DefaultWsdl11Definition wsdlDefinition = new DefaultWsdl11Definition();
 		wsdlDefinition.setPortTypeName("UserService");
-		wsdlDefinition.setTargetNamespace("http://springwstest.maxaramos.com/user");
+		wsdlDefinition.setTargetNamespace("http://samplespringws.maxaramos.com/user");
 		wsdlDefinition.setLocationUri("/services");
 		wsdlDefinition.setSchema(userXsdSchema);
 		return wsdlDefinition;
@@ -66,7 +66,7 @@ public class WsConfig extends WsConfigurerAdapter {
 	public DefaultWsdl11Definition addressWsdlDefinition(@Qualifier("address") XsdSchema addressXsdSchema) {
 		DefaultWsdl11Definition wsdlDefinition = new DefaultWsdl11Definition();
 		wsdlDefinition.setPortTypeName("AddressService");
-		wsdlDefinition.setTargetNamespace("http://springwstest.maxaramos.com/address");
+		wsdlDefinition.setTargetNamespace("http://samplespringws.maxaramos.com/address");
 		wsdlDefinition.setLocationUri("/services");
 		wsdlDefinition.setSchema(addressXsdSchema);
 		return wsdlDefinition;
